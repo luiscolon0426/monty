@@ -7,30 +7,24 @@
  **/
 void swap(stack_t **stack, unsigned int value)
 {
-	int a;
-	int b;
-	int count;
+	stack_t *tmp;
+	(void)value;
 
-	while (*stack)
-	{
-		(*stack) = (*stack)->next;
-		count++;
-	}
-
-	if (count <= 1)
+	if (!(*stack) || !((*stack)->next))
 	{
 		printf("L%i: can't swap, stack too short\n", value);
 		exit(EXIT_FAILURE);
 	}
-
-	a = (*stack)->n;
-	pop(stack, a);
-	b = (*stack)->n;
-	pop(stack, b);
-
-	push(stack, a);
-	push(stack, b);
-}
+	tmp = (*stack)->next;
+	(*stack)->prev = (*stack)->next;
+	(*stack)->next = tmp->next;
+	tmp->prev = NULL;
+	(*stack)->prev = tmp;
+	if (tmp->next)
+		tmp->next->prev = *stack;
+	tmp->next = *stack;
+	(*stack) = (*stack)->prev;
+	}
 
 
 

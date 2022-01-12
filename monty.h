@@ -57,6 +57,7 @@ void pop(stack_t **stack, unsigned int value);
 void add(stack_t **stack, unsigned int value);
 void swap(stack_t **stack, unsigned int value);
 void nop(stack_t **stack, unsigned int value);
+void parse_command(stack_t **stack, char *op, unsigned int value);
 
 
 

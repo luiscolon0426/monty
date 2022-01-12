@@ -5,4 +5,7 @@
  * @value: line number
  **/
 void nop(stack_t **stack, unsigned int value)
-{}
+{
+	(void)stack;
+	(void)value;
+}

@@ -1,81 +1,58 @@
 #include "monty.h"
-
-/**
- * _isdigit - Checks for a digit (0-9).
- * @c: The number to be checked.
- *
- * Return: 1 if the number is a digit, 0 otherwise.
- */
-int _isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-	{
-		return (1);
-	}
-	else
-		return (0);
-
-}
-
+#include <ctype.h>
 
 /**
  * push - adds a new element to the stack.
  * @stack: doubly linked list que nos pasan.
- * @value: El valor que va dentro del node.
+ * @line_number: El valor que va dentro del node.
  *
  * Return: el nuevo node que creamos (new_head).
  **/
 
 
-void push(stack_t **stack, unsigned int value)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_head;
-
-	if (!_isdigit(value))
-	{
-		printf("L%i: usage: push integer\n", value);
-	}
+	char *op;
+	char *endptr;
+	int num;
 
 	new_head = malloc(sizeof(stack_t));
-
 	if (new_head == NULL)
 	{
 		printf("Error: malloc failed\n");
 		freedlist(new_head);
 		exit(EXIT_FAILURE);
 	}
-	new_head->n = value;
+	op = strtok(NULL, " \n$");
+	num = strtol(op, &endptr, 10);
+	new_head->n = num;
+	if (isdigit(new_head->n))
+	{
+		printf("L%i: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	new_head->prev = NULL;
-
-	if (*stack == NULL)
-	{
-		*stack = new_head;
-		new_head->next = NULL;
-	}
-	else
-	{
-		new_head->next = *stack;
-		(*stack)->prev = new_head;
-		*stack = new_head;
-	}
+	new_head->next = *stack;
+	if (new_head->next != NULL)
+		(new_head->next)->prev = new_head;
+	*stack = new_head;
 }
 
 /**
  * pall - prints all elements of the stack
  * @stack: stack that needs to be printed
- * @value: unused variable.
+ * @line_number: unused variable.
  *
  **/
-void pall(stack_t **stack, unsigned int value)
+void pall(stack_t **stack, unsigned int line_number)
 {
-	(void)value;
+	stack_t *element = *stack;
+	(void)line_number;
 
-	if (*stack == NULL)
-		return;
-
-	while (*stack)
+	while (element != NULL)
 	{
-		printf("%i\n", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%d\n", element->n);
+		element = element->next;
 	}
 }

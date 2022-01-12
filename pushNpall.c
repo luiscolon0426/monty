@@ -13,7 +13,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new_head;
-	char *op;
+	char *op; /*parametro del push*/
 	char *endptr;
 	int num;
 
@@ -25,7 +25,10 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	op = strtok(NULL, " \n$");
-	num = strtol(op, &endptr, 10);
+	if (op != NULL)
+	{
+		num = strtol(op, &endptr, 10);
+	}
 	new_head->n = num;
 	if (isdigit(new_head->n))
 	{

@@ -5,7 +5,7 @@
  * @value:
  *
  **/
-void pint(stack_t **stack, int value)
+void pint(stack_t **stack, unsigned int value)
 {
 	if (stack == NULL || *stack == NULL)
 	{
@@ -20,7 +20,7 @@ void pint(stack_t **stack, int value)
  * @value: ...
  *
  **/
-void pop(stack_t **stack, int value)
+void pop(stack_t **stack, unsigned int value)
 {
 	stack_t  *tmp;
 

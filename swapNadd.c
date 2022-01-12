@@ -5,7 +5,7 @@
  * @value: ...
  *
  **/
-void swap(stack_t **stack, int value)
+void swap(stack_t **stack, unsigned int value)
 {
 	int a;
 	int b;
@@ -41,7 +41,7 @@ void swap(stack_t **stack, int value)
  *
  * Return: result
  **/
-int add(stack_t **stack, int value)
+void add(stack_t **stack, unsigned int value)
 {
 	int result = 0;
 	int count;
@@ -66,5 +66,4 @@ int add(stack_t **stack, int value)
 	pop(stack, value);
 	(*stack)->n = result;
 
-	return (result);
 }

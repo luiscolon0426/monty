@@ -49,13 +49,14 @@ typedef struct instruction_s
 
 
 /*PROTOTYPES*/
-stack_t *push(stack_t **stack, int value);
+void push(stack_t **stack, unsigned int value);
 void pall(stack_t **stack, unsigned int value);
 void freedlist(stack_t *head);
-void pint(stack_t **stack, int value);
-void pop(stack_t **stack, int value);
-int add(stack_t **stack, int value);
-void swap(stack_t **stack, int value);
+void pint(stack_t **stack, unsigned int value);
+void pop(stack_t **stack, unsigned int value);
+void add(stack_t **stack, unsigned int value);
+void swap(stack_t **stack, unsigned int value);
+void nop(stack_t **stack, unsigned int value);
 
 
 

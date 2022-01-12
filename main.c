@@ -47,7 +47,7 @@ int open_file(char *filename, stack_t **stack)
 	}
 	while (getline(&line, &len, fd) != EOF)
 	{
-		command = strtok(line, " \n$");
+		command = strtok(line, " \n\t\r$");
 		line_number++;
 		if (command)
 			parse_command(stack, command, line_number);

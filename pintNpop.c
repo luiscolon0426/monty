@@ -22,16 +22,13 @@ void pint(stack_t **stack, unsigned int value)
  **/
 void pop(stack_t **stack, unsigned int value)
 {
-	stack_t  *tmp;
+	stack_t  *tmp = *stack;
 
-	if (stack == NULL || *stack == NULL)
+	if (tmp == NULL)
 	{
 		printf("L%d: can't pop an empty stack\n", value);
 		exit(EXIT_FAILURE);
 	}
-
-	tmp = (*stack)->next;
-	tmp->prev = NULL;
-	free(*stack);
-	*stack = tmp;
+	*stack = (*stack)->next;
+	free(tmp);
 }

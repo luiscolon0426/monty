@@ -1,6 +1,8 @@
 #include "monty.h"
 /**
- *
+ * swap - swaps the two tops elements of the stack
+ * @stack: head of doubly linked list
+ * @value: ...
  *
  **/
 void swap(stack_t **stack, int value)
@@ -9,7 +11,7 @@ void swap(stack_t **stack, int value)
 	int b;
 	int count;
 
-	while(*stack)
+	while (*stack)
 	{
 		(*stack) = (*stack)->next;
 		count++;
@@ -30,12 +32,21 @@ void swap(stack_t **stack, int value)
 	push(stack, b);
 }
 
+
+
+/**
+ * add - adds the two tops elements of the stacks
+ * @stack: head of doubly linked list.
+ * @value: ...
+ *
+ * Return: result
+ **/
 int add(stack_t **stack, int value)
 {
 	int result = 0;
 	int count;
 
-	while(*stack)
+	while (*stack)
 	{
 		(*stack) = (*stack)->next;
 		count++;

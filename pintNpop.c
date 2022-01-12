@@ -14,7 +14,12 @@ void pint(stack_t **stack, int value)
 	}
 	printf("%d\n", (*stack)->n);
 }
-
+/**
+ * pop - removes the top element of th stack
+ * @stack: head of the doubly linked list
+ * @value: ...
+ *
+ **/
 void pop(stack_t **stack, int value)
 {
 	stack_t  *tmp;

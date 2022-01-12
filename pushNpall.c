@@ -64,7 +64,7 @@ stack_t *push(stack_t **stack, int value)
 /**
  * pall - prints all elements of the stack
  * @stack: stack that needs to be printed
- * @line_number: unused variable.
+ * @value: unused variable.
  *
  **/
 void pall(stack_t **stack, unsigned int value)

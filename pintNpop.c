@@ -30,9 +30,8 @@ void pop(stack_t **stack, unsigned int value)
 		freedlist(*stack);
 		exit(EXIT_FAILURE);
 	}
-	
 	tmp = *stack;
-	
+
 	if (tmp->next != NULL)
 	{
 		(*stack) = tmp->next;

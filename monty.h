@@ -7,10 +7,28 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
+#include <ctype.h>
 
 
 /*STRUCTURES*/
+
+
+
+
+/**
+ * struct global - holds the input FILEstream and the buffer
+ * @inputf: input FILEstream
+ * @tmp: buffer to save line input
+ * @mode: switches between queue and stack modes
+ */
+struct global
+{
+	FILE *inputf;
+	char *tmp;
+	int mode;
+};
+
+extern struct global glob;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

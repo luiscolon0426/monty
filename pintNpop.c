@@ -32,10 +32,9 @@ void pop(stack_t **stack, unsigned int value)
 	}
 	tmp = *stack;
 
-	if (tmp->next != NULL)
-	{
 		(*stack) = tmp->next;
-		(*stack)->prev = NULL;
+		if (*stack != NULL)
+			(*stack)->prev = NULL;
 		free(tmp);
-	}
+	
 }

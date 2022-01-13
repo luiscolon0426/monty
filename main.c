@@ -55,6 +55,7 @@ int open_file(char *filename, stack_t **stack)
 	}
 	fclose(fd);
 	free(line);
+	freedlist(*stack);
 	return (EXIT_SUCCESS);
 }
 
@@ -80,19 +81,18 @@ void parse_command(stack_t **stack, char *op, unsigned int line_number)
 	};
 
 	for (i = 0; comm[i].opcode; i++)
+	{
 		if (strcmp(op, comm[i].opcode) == 0)
 		{
 			comm[i].f(stack, line_number);
 			return;
 		}
-		else
-		{
-			freedlist(*stack);
-		}
+	}
 
 	if (strlen(op) != 0 && op[0] != '#')
 	{
 		printf("L%i: unkown instructions %s\n", line_number, op);
+		freedlist(*stack);
 		exit(EXIT_FAILURE);
 	}
 }

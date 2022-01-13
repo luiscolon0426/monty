@@ -21,6 +21,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		printf("Error: malloc failed\n");
 		freedlist(new_head);
+		freedlist(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -66,7 +67,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	while (element != NULL)
 	{
-		printf("%d\n", element->n);
+		printf("%i\n", element->n);
 		element = element->next;
 	}
 }

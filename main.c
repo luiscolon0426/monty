@@ -52,7 +52,6 @@ int open_file(char *filename, stack_t **stack)
 		if (command)
 			parse_command(stack, command, line_number);
 	}
-	free(line);
 	fclose(fd);
 	return (EXIT_SUCCESS);
 }
@@ -82,6 +81,7 @@ void parse_command(stack_t **stack, char *op, unsigned int line_number)
 		if (strcmp(op, comm[i].opcode) == 0)
 		{
 			comm[i].f(stack, line_number);
+			free(*stack);
 			return;
 		}
 

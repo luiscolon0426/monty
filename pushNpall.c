@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <ctype.h>
 
 /**
  * push - adds a new element to the stack.
@@ -12,7 +11,7 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_head = NULL;
+	stack_t *new_head;
 	char *op; /*parametro del push*/
 	char *endptr;
 	int num;
@@ -21,7 +20,6 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new_head == NULL)
 	{
 		printf("Error: malloc failed\n");
-		freedlist(new_head);
 		exit(EXIT_FAILURE);
 	}
 
@@ -43,11 +41,6 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	new_head->next = *stack;
-
-	if (new_head->next != NULL)
-	{
-		(new_head->next)->prev = new_head;
-	}
 
 	*stack = new_head;
 }

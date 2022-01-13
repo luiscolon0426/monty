@@ -31,10 +31,8 @@ void pop(stack_t **stack, unsigned int value)
 		exit(EXIT_FAILURE);
 	}
 	tmp = *stack;
-
 		(*stack) = tmp->next;
 		if (*stack != NULL)
 			(*stack)->prev = NULL;
 		free(tmp);
-	
 }

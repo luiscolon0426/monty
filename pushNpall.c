@@ -20,6 +20,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new_head == NULL)
 	{
 		printf("Error: malloc failed\n");
+		freedlist(new_head);
 		exit(EXIT_FAILURE);
 	}
 

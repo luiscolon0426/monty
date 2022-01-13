@@ -37,27 +37,14 @@ void swap(stack_t **stack, unsigned int value)
  **/
 void add(stack_t **stack, unsigned int value)
 {
-	int result = 0;
-	int count;
+	int tmp;
 
-	while (*stack)
-	{
-		(*stack) = (*stack)->next;
-		count++;
-	}
-
-	if (count <= 1)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		printf("L%i:can't add, stack too short\n", value);
 		exit(EXIT_FAILURE);
 	}
-
-	while (stack)
-	{
-		result += (*stack)->n;
-		(*stack) = (*stack)->next;
-	}
+	tmp = (*stack)->n;
 	pop(stack, value);
-	(*stack)->n = result;
-
+	(*stack)->n += tmp;
 }

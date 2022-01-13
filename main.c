@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 	}
 	open_file(argv[1], &head);
 	exit(EXIT_SUCCESS);
+
 }
 
 /**
@@ -53,6 +54,7 @@ int open_file(char *filename, stack_t **stack)
 			parse_command(stack, command, line_number);
 	}
 	fclose(fd);
+	free(line);
 	return (EXIT_SUCCESS);
 }
 
